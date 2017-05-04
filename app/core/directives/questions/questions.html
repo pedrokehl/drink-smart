@@ -1,0 +1,8 @@
+<select
+        class="form-control"
+        ng-required="true"
+        ng-repeat="fieldKey in vm.fieldKeys"
+        ng-model="vm.model[fieldKey]"
+        ng-options="k as v for (k, v) in vm.fields[fieldKey].options">
+    <option value="">Selecione {{vm.fields[fieldKey].prefix}} {{vm.fields[fieldKey].fieldName + vm.fields[fieldKey].suffix}}</option>
+</select>

@@ -1,0 +1,16 @@
+<div class="home" ng-class="{'home-with-results': vm.result.case}">
+    <h2>DrinkSmart</h2>
+    <h3>Sistema de recomendação de bebidas.</h3>
+    <form name="drinksForm" class="drinks-form">
+        <questions data-model="vm.answers"></questions>
+        <button class="btn btn-primary btn-block" ng-disabled="drinksForm.$invalid" ng-click="vm.find()">DESCUBRA!</button>
+    </form>
+    <div ng-if="vm.result.case" class="alert alert-success">
+        <p>{{vm.result.case.solucao}}</p>
+        <button class="btn btn-default reset" ng-click="vm.clear()">Limpar e tentar Novamente.</button>
+    </div>
+    <div ng-if="vm.submited && !vm.result.case" class="alert alert-danger">
+        <p>Não foi possível encontrar uma solução para o seu caso.</p>
+        <button class="btn btn-default reset" ng-click="vm.clear()">Limpar e tentar Novamente.</button>
+    </div>
+</div>

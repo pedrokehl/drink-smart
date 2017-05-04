@@ -1,0 +1,43 @@
+<div class="specialist">
+    <h3>Área do Especialista</h3>
+    <table ng-show="vm.cases.length > 0" class="table">
+        <tr>
+            <th ng-repeat="fieldTitle in vm.fields">{{fieldTitle.fieldName}}</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr dir-paginate="drinkCase in vm.cases | itemsPerPage: 10">
+            <td ng-repeat="(key, value) in vm.fields">{{vm.fields[key].options[drinkCase[key]]}}</td>
+            <td><a href="javascript:" title="{{drinkCase.solucao}}!"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></a></td>
+            <td><a href="javascript:" ng-click="vm.deleteCase(drinkCase)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+        </tr>
+    </table>
+    <dir-pagination-controls class="pull-right"></dir-pagination-controls>
+    <button data-toggle="modal" data-target="#insertCaseModal" class="btn btn-primary insert-case" ng-click="vm.openModal()">Inserir novo caso</button>
+
+    <div class="modal fade" id="insertCaseModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3>Inserir novo caso</h3>
+                </div>
+                <div class="modal-body">
+                    <form name="specialistForm" class="drinks-form">
+                        <questions data-model="vm.newCase"></questions>
+                        <input
+                                class="form-control"
+                                ng-required="true"
+                                ng-model="vm.newCase.solucao"
+                                type="text"
+                                placeholder="Solução"/>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" ng-disabled="specialistForm.$invalid" ng-click="vm.insertCase(vm.newCase)">Inserir caso</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

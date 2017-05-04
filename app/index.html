@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="drinkSmart">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app.css">
+    <title>Drink Smart</title>
+</head>
+<body>
+    <div ng-controller="mainController as mainCtrl">
+        <header
+            data-state="mainCtrl.state"
+            data-states="mainCtrl.states">
+        </header>
+        <home
+            ng-if="mainCtrl.state === mainCtrl.states.home">
+        </home>
+        <specialist
+            ng-if="mainCtrl.state === mainCtrl.states.spec">
+        </specialist>
+    </div>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angularUtils-pagination/dirPagination.js"></script>
+    <script src="app.js"></script>
+    <script src="core/constants/fields.js"></script>
+    <script src="core/constants/cases.js"></script>
+    <script src="core/constants/weights.js"></script>
+    <script src="core/core.js"></script>
+    <script src="core/directives/questions/questions.js"></script>
+    <script src="header/header.js"></script>
+    <script src="home/home.js"></script>
+    <script src="specialist/specialist.js"></script>
+</body>
+</html>
